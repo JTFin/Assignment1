@@ -147,10 +147,12 @@ void init() {
 	GLfloat* normalized;
 	int count;
 
-	nn = shapes[0].mesh.indices.size();
-	normals = new GLfloat[nn];
+	//nn = shapes[0].mesh.indices.size();
+	//normals = new GLfloat[nn]; //Original
+	normals = new GLfloat[nv];
 
-	normalized = new GLfloat[sizeof(normals)];
+	//normalized = new GLfloat[sizeof(normals)]; //Original
+	normalized = new GLfloat[nv];
 
 	/*  
 	 *	Retrieve the vertex normals 
@@ -183,7 +185,15 @@ void init() {
 		xVector2 = vertices[indices[xIndice3]] - vertices[indices[xIndice1]];
 		yVector2 = vertices[indices[yIndice3]] - vertices[indices[yIndice1]];
 		zVector2 = vertices[indices[zIndice3]] - vertices[indices[zIndice1]];
+		/*
+		xVector1 = vertices[xIndice2] - vertices[xIndice1];
+		yVector1 = vertices[yIndice2] - vertices[yIndice1];
+		zVector1 = vertices[zIndice2] - vertices[zIndice1];
 
+		xVector2 = vertices[xIndice3] - vertices[xIndice1];
+		yVector2 = vertices[yIndice3] - vertices[yIndice1];
+		zVector2 = vertices[zIndice3] - vertices[zIndice1];
+		*/
 		xNormal = yVector1 * zVector2 - zVector1 * yVector2;
 		yNormal = zVector1 * xVector2 - xVector1 * zVector2;
 		zNormal = xVector1 * yVector2 - yVector1 * xVector2;
